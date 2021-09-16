@@ -1,0 +1,5 @@
+<p>{{myText}}</p>
+<input  type="text" [(ngModel)]="myText">
+<p [ngStyle]= "{background: getColor()}">The status is {{status}}</p>
+<div *ngFor="let server of servers">{{server}}</div>
+<p>{{bankName}}</p>
