@@ -13,17 +13,13 @@ export class RecipeService {
          'A simple text',
          'https://www.simplyrecipes.com/thmb/OCi18J2V8OeKDFV3FxoeKvgq74E=/1423x1067/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2012__07__grilled-sweet-potatoes-horiz-a-1600-7c8292daa98e4020b447f0dc97a45cb7.jpg',
          [ new Ingredient('meat', 4)]
-         ),
-        new Recipe('A test resipes2',
-         'A simple text', 
-         'https://www.simplyrecipes.com/thmb/OCi18J2V8OeKDFV3FxoeKvgq74E=/1423x1067/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2012__07__grilled-sweet-potatoes-horiz-a-1600-7c8292daa98e4020b447f0dc97a45cb7.jpg',
-         [ new Ingredient('egg', 11), new Ingredient('Milk', 1)]
          )
-
+        
     ]
 
     constructor(private slService: ShoppingListService){}
 
+   
 
     getRecipes() {
         return this.recipes.slice()
@@ -43,7 +39,17 @@ export class RecipeService {
     }
 
     updateRecipe(id: number, recipe: Recipe) {
-        this.recipes[id] = recipe
+        this.recipes[id] = recipe     
         this.recipesChanged.next(this.recipes.slice())
+    }
+
+    deleteRecipe(index: number) {
+        this.recipes.splice(index, 1)
+    }
+
+    setRecipes(recipes: Recipe[]) {        
+        this.recipes = recipes;
+        console.log(this.recipes)
+        this.recipesChanged.next(this.recipes.slice())   
     }
 }
